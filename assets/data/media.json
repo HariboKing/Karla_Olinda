@@ -30,44 +30,44 @@
     {
       "title": "Gigs and Live Performances",
       "items": [
-        { "title": "Live 01", "link": "", "image": "" },
-        { "title": "Live 02", "link": "", "image": "" },
-        { "title": "Live 03", "link": "", "image": "" },
-        { "title": "Live 04", "link": "", "image": "" },
-        { "title": "Live 05", "link": "", "image": "" }
+        { "title": "Live 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Live 02", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Live 03", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Live 04", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Live 05", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" }
       ]
     },
     {
       "title": "Classical & Art Songs",
       "items": [
-        { "title": "Classical 01", "link": "", "image": "" },
-        { "title": "Classical 02", "link": "", "image": "" },
-        { "title": "Classical 03", "link": "", "image": "" },
-        { "title": "Classical 04", "link": "", "image": "" },
-        { "title": "Classical 05", "link": "", "image": "" },
-        { "title": "Classical 06", "link": "", "image": "" }
+        { "title": "Classical 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Classical 02", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Classical 03", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Classical 04", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Classical 05", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Classical 06", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" }
       ]
     },
     {
       "title": "Original Songs",
       "items": [
-        { "title": "Original 01", "link": "", "image": "" },
-        { "title": "Original 02", "link": "", "image": "" },
-        { "title": "Original 03", "link": "", "image": "" },
-        { "title": "Original 04", "link": "", "image": "" },
-        { "title": "Original 05", "link": "", "image": "" },
-        { "title": "Original 06", "link": "", "image": "" }
+        { "title": "Original 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Original 02", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Original 03", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Original 04", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Original 05", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Original 06", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" }
       ]
     },
     {
       "title": "Choir and Musical",
       "items": [
-        { "title": "Choir 01", "link": "", "image": "" },
-        { "title": "Choir 02", "link": "", "image": "" },
-        { "title": "Choir 03", "link": "", "image": "" },
-        { "title": "Choir 04", "link": "", "image": "" },
-        { "title": "Choir 05", "link": "", "image": "" },
-        { "title": "Choir 06", "link": "", "image": "" }
+        { "title": "Choir 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Choir 02", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Choir 03", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Choir 04", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Choir 05", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
+        { "title": "Choir 06", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" }
       ]
     }
   ]
