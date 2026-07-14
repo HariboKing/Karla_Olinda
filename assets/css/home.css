@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: #050505;
+  background: #000;
 }
 
 .hero-portrait::before,
@@ -23,9 +23,7 @@
 
 .hero-portrait::after {
   z-index: -1;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 34%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.12) 44%, rgba(0, 0, 0, 0.82) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.82) 100%);
 }
 
 .hero-portrait > * {
