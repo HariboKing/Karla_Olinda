@@ -45,6 +45,6 @@
 
 @media (max-width: 520px) {
   .hero-portrait::before {
-    background-size: min(92%, 420px) auto;
+    background-size: min(60%, 420px) auto;
   }
 }
