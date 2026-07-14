@@ -15,10 +15,19 @@
 
 .hero-portrait::before {
   z-index: -2;
-  background-image: url("../images/portrait.jpg");
-  background-position: center 22px;
+  background-image:
+    url("../images/portrait.jpg"),
+    linear-gradient(rgba(5, 5, 5, 0.58), rgba(5, 5, 5, 0.58)),
+    url("../images/portrait.jpg");
+  background-position:
+    center 24px,
+    center,
+    center top;
   background-repeat: no-repeat;
-  background-size: 285px auto;
+  background-size:
+    auto 90%,
+    cover,
+    cover;
 }
 
 .hero-portrait::after {
@@ -39,12 +48,18 @@
 
 @media (max-width: 980px) {
   .hero-portrait::before {
-    background-size: 330px auto;
+    background-size:
+      auto 86%,
+      cover,
+      cover;
   }
 }
 
 @media (max-width: 520px) {
   .hero-portrait::before {
-    background-size: 76% auto;
+    background-size:
+      auto 82%,
+      cover,
+      cover;
   }
 }
