@@ -120,6 +120,86 @@ function setupPlaceholderLinks() {
   });
 }
 
+function getFormValue(form, selector) {
+  const field = form.querySelector(selector);
+  return field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement
+    ? field.value.trim()
+    : "";
+}
+
+function setFieldInvalid(field, isInvalid) {
+  field?.closest(".form-field")?.classList.toggle("is-invalid", isInvalid);
+}
+
+function setupContactForm() {
+  const form = document.querySelector("[data-contact-form]");
+  if (!(form instanceof HTMLFormElement)) {
+    return;
+  }
+
+  const nameField = form.querySelector("[data-contact-name]");
+  const emailField = form.querySelector("[data-contact-email]");
+  const phoneField = form.querySelector("[data-contact-phone]");
+  const error = form.querySelector("[data-contact-error]");
+
+  if (!(nameField instanceof HTMLInputElement) || !(emailField instanceof HTMLInputElement) || !(phoneField instanceof HTMLInputElement)) {
+    return;
+  }
+
+  const validateContactForm = () => {
+    const hasName = nameField.value.trim() !== "";
+    const hasEmail = emailField.value.trim() !== "";
+    const hasPhone = phoneField.value.trim() !== "";
+    const hasContactDetail = hasEmail || hasPhone;
+
+    nameField.setCustomValidity(hasName ? "" : "Please fill in your name.");
+    emailField.setCustomValidity(hasContactDetail ? "" : "Please fill in either an email address or phone number.");
+    phoneField.setCustomValidity(hasContactDetail ? "" : "Please fill in either an email address or phone number.");
+
+    setFieldInvalid(nameField, !hasName);
+    setFieldInvalid(emailField, !hasContactDetail);
+    setFieldInvalid(phoneField, !hasContactDetail);
+
+    if (error instanceof HTMLElement) {
+      error.hidden = hasName && hasContactDetail;
+    }
+
+    return hasName && hasContactDetail;
+  };
+
+  [nameField, emailField, phoneField].forEach((field) => {
+    field.addEventListener("input", validateContactForm);
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const passesRequiredRules = validateContactForm();
+    if (!passesRequiredRules || !form.reportValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const name = getFormValue(form, "[data-contact-name]");
+    const email = getFormValue(form, "[data-contact-email]");
+    const phone = getFormValue(form, "[data-contact-phone]");
+    const lessonInquiry = getFormValue(form, "[data-contact-lessons]");
+    const message = getFormValue(form, "[data-contact-message]");
+    const body = [
+      `Name: ${name}`,
+      `Email address: ${email || "Not provided"}`,
+      `Phone number: ${phone || "Not provided"}`,
+      `Lesson inquiry: ${lessonInquiry}`,
+      "",
+      "Message:",
+      message || "No message provided."
+    ].join("\n");
+
+    const subject = `Karla Olinda contact form - ${name}`;
+    window.location.href = `mailto:info@jovka.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
+
 function hasUsableLink(link) {
   return typeof link === "string" && link.trim() !== "" && link.trim() !== "#";
 }
@@ -382,4 +462,7 @@ function renderMedia(data) {
 setCurrentYear();
 setupNavigation();
 setupPlaceholderLinks();
-loadMediaData();
+setupContactForm();
+if (document.querySelector("[data-featured-track], [data-portfolio-grid]")) {
+  loadMediaData();
+}
