@@ -55,9 +55,13 @@ const fallbackMediaData = {
   ]
 };
 
+const SHOWCASE_HOVER_DELAY = 650;
+
 const state = {
   featuredIndex: 2,
-  featuredItems: []
+  featuredItems: [],
+  showcaseHoverTimer: null,
+  showcaseHoverLocked: false
 };
 
 function setCurrentYear() {
@@ -166,6 +170,26 @@ function getShowcaseRole(offset) {
   return offset < 0 ? "is-far is-far-left" : "is-far is-far-right";
 }
 
+function clearShowcaseHoverTimer() {
+  if (state.showcaseHoverTimer === null) {
+    return;
+  }
+
+  window.clearTimeout(state.showcaseHoverTimer);
+  state.showcaseHoverTimer = null;
+}
+
+function moveFeaturedShowcaseTo(index) {
+  clearShowcaseHoverTimer();
+
+  if (index === state.featuredIndex) {
+    return;
+  }
+
+  state.featuredIndex = index;
+  renderFeaturedShowcase();
+}
+
 function renderFeaturedShowcase() {
   const track = document.querySelector("[data-featured-track]");
   if (!track || state.featuredItems.length === 0) {
@@ -173,6 +197,10 @@ function renderFeaturedShowcase() {
   }
 
   track.innerHTML = "";
+  track.onpointerleave = () => {
+    clearShowcaseHoverTimer();
+    state.showcaseHoverLocked = false;
+  };
 
   const total = state.featuredItems.length;
   const offsets = total >= 5 ? [-2, -1, 0, 1, 2] : [-1, 0, 1];
@@ -183,10 +211,26 @@ function renderFeaturedShowcase() {
     const roleClass = getShowcaseRole(offset);
     const card = createShowcaseCard(item, roleClass);
 
+    if (offset !== 0) {
+      card.addEventListener("pointerenter", () => {
+        if (state.showcaseHoverLocked) {
+          return;
+        }
+
+        clearShowcaseHoverTimer();
+        state.showcaseHoverTimer = window.setTimeout(() => {
+          state.showcaseHoverLocked = true;
+          moveFeaturedShowcaseTo(index);
+        }, SHOWCASE_HOVER_DELAY);
+      });
+
+      card.addEventListener("pointerleave", clearShowcaseHoverTimer);
+    }
+
     card.addEventListener("click", () => {
       if (offset !== 0) {
-        state.featuredIndex = index;
-        renderFeaturedShowcase();
+        state.showcaseHoverLocked = true;
+        moveFeaturedShowcaseTo(index);
         return;
       }
 
@@ -203,15 +247,13 @@ function renderFeaturedShowcase() {
 
   if (prev) {
     prev.onclick = () => {
-      state.featuredIndex = (state.featuredIndex - 1 + total) % total;
-      renderFeaturedShowcase();
+      moveFeaturedShowcaseTo((state.featuredIndex - 1 + total) % total);
     };
   }
 
   if (next) {
     next.onclick = () => {
-      state.featuredIndex = (state.featuredIndex + 1) % total;
-      renderFeaturedShowcase();
+      moveFeaturedShowcaseTo((state.featuredIndex + 1) % total);
     };
   }
 }
