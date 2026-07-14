@@ -4,7 +4,9 @@ const fallbackMediaData = {
   featured: [
     { title: "Stage Portrait", link: "media.html", image: "" },
     { title: "Performance Moment", link: "media.html", image: "" },
-    { title: "Editorial Still", link: "media.html", image: "" }
+    { title: "Editorial Still", link: "media.html", image: "" },
+    { title: "Vocal Work", link: "media.html", image: "" },
+    { title: "Theatre Moment", link: "media.html", image: "" }
   ],
   groups: [
     {
@@ -54,7 +56,7 @@ const fallbackMediaData = {
 };
 
 const state = {
-  featuredIndex: 1,
+  featuredIndex: 2,
   featuredItems: []
 };
 
@@ -144,6 +146,22 @@ function createShowcaseCard(item, roleClass) {
   return card;
 }
 
+function getShowcaseRole(offset) {
+  if (offset === 0) {
+    return "is-center";
+  }
+
+  if (offset === -1) {
+    return "is-side is-left";
+  }
+
+  if (offset === 1) {
+    return "is-side is-right";
+  }
+
+  return offset < 0 ? "is-far is-far-left" : "is-far is-far-right";
+}
+
 function renderFeaturedShowcase() {
   const track = document.querySelector("[data-featured-track]");
   if (!track || state.featuredItems.length === 0) {
@@ -153,12 +171,12 @@ function renderFeaturedShowcase() {
   track.innerHTML = "";
 
   const total = state.featuredItems.length;
-  const offsets = [-1, 0, 1];
+  const offsets = total >= 5 ? [-2, -1, 0, 1, 2] : [-1, 0, 1];
 
   offsets.forEach((offset) => {
     const index = (state.featuredIndex + offset + total) % total;
     const item = state.featuredItems[index];
-    const roleClass = offset === 0 ? "is-center" : offset < 0 ? "is-side is-left" : "is-side is-right";
+    const roleClass = getShowcaseRole(offset);
     const card = createShowcaseCard(item, roleClass);
 
     card.addEventListener("mouseenter", () => {
