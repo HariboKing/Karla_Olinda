@@ -17,7 +17,8 @@
   z-index: -2;
   background-image: url("../images/portrait.jpg");
   background-position: center top;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: min(72%, 520px) auto;
 }
 
 .hero-portrait::after {
@@ -34,4 +35,16 @@
 
 .portrait-frame {
   display: none;
+}
+
+@media (max-width: 980px) {
+  .hero-portrait::before {
+    background-size: min(78%, 520px) auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-portrait::before {
+    background-size: min(92%, 420px) auto;
+  }
 }
