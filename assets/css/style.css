@@ -245,6 +245,17 @@ button {
   min-height: 252px;
   gap: 0;
   overflow: visible;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.showcase-track.is-shifting-next {
+  opacity: 0.74;
+  transform: translateX(-42px);
+}
+
+.showcase-track.is-shifting-prev {
+  opacity: 0.74;
+  transform: translateX(42px);
 }
 
 .showcase-card {
