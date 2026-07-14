@@ -1,0 +1,12 @@
+# Videos
+
+Place local video files here only when they should be hosted directly on Strato.
+
+For most public performances, external video links are easier:
+
+- YouTube
+- Vimeo
+- TikTok
+- Instagram
+
+Those links can be added in `assets/data/media.json`.
