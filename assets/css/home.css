@@ -1,0 +1,37 @@
+.hero-portrait {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #050505;
+}
+
+.hero-portrait::before,
+.hero-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-portrait::before {
+  z-index: -2;
+  background-image: url("../images/portrait.jpg");
+  background-position: center top;
+  background-size: cover;
+}
+
+.hero-portrait::after {
+  z-index: -1;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 34%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.12) 44%, rgba(0, 0, 0, 0.82) 100%);
+}
+
+.hero-portrait > * {
+  position: relative;
+  z-index: 1;
+}
+
+.portrait-frame {
+  display: none;
+}
