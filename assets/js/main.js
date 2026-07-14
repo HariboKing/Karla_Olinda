@@ -122,6 +122,10 @@ function isExternalLink(link) {
   return /^https?:\/\//i.test(link);
 }
 
+function getDetailValue(value, fallback) {
+  return typeof value === "string" && value.trim() !== "" ? value : fallback;
+}
+
 function applyMediaImage(element, image) {
   if (typeof image !== "string" || image.trim() === "") {
     return;
@@ -179,14 +183,13 @@ function renderFeaturedShowcase() {
     const roleClass = getShowcaseRole(offset);
     const card = createShowcaseCard(item, roleClass);
 
-    card.addEventListener("mouseenter", () => {
+    card.addEventListener("click", () => {
       if (offset !== 0) {
         state.featuredIndex = index;
         renderFeaturedShowcase();
+        return;
       }
-    });
 
-    card.addEventListener("click", () => {
       if (hasUsableLink(item.link)) {
         window.location.href = item.link;
       }
@@ -241,6 +244,8 @@ function renderPortfolio(groups) {
           entry.target = "_blank";
           entry.rel = "noreferrer";
         }
+      } else {
+        entry.tabIndex = 0;
       }
 
       const image = document.createElement("div");
@@ -250,8 +255,28 @@ function renderPortfolio(groups) {
       applyMediaImage(image, item.image);
 
       const label = document.createElement("span");
+      label.className = "portfolio-item-title";
       label.textContent = item.title;
       image.appendChild(label);
+
+      const details = document.createElement("div");
+      details.className = "portfolio-item-details";
+
+      const meta = document.createElement("div");
+      meta.className = "portfolio-item-meta";
+
+      const date = document.createElement("span");
+      date.textContent = getDetailValue(item.date, "XXXX-XXXX");
+
+      const location = document.createElement("span");
+      location.textContent = getDetailValue(item.location, "Leeg");
+
+      const description = document.createElement("p");
+      description.textContent = getDetailValue(item.description, "Leeg");
+
+      meta.append(date, location);
+      details.append(meta, description);
+      image.appendChild(details);
       entry.appendChild(image);
       items.appendChild(entry);
     });
