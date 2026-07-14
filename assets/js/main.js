@@ -56,12 +56,14 @@ const fallbackMediaData = {
 };
 
 const SHOWCASE_HOVER_DELAY = 650;
+const SHOWCASE_SHIFT_DURATION = 180;
 
 const state = {
   featuredIndex: 2,
   featuredItems: [],
   showcaseHoverTimer: null,
-  showcaseHoverLocked: false
+  showcaseHoverLocked: false,
+  showcaseIsAnimating: false
 };
 
 function setCurrentYear() {
@@ -179,15 +181,42 @@ function clearShowcaseHoverTimer() {
   state.showcaseHoverTimer = null;
 }
 
+function getShowcaseShiftClass(index) {
+  const total = state.featuredItems.length;
+  const forwardDistance = (index - state.featuredIndex + total) % total;
+  const backwardDistance = (state.featuredIndex - index + total) % total;
+
+  return forwardDistance <= backwardDistance ? "is-shifting-next" : "is-shifting-prev";
+}
+
 function moveFeaturedShowcaseTo(index) {
   clearShowcaseHoverTimer();
 
-  if (index === state.featuredIndex) {
+  if (index === state.featuredIndex || state.showcaseIsAnimating) {
     return;
   }
 
-  state.featuredIndex = index;
-  renderFeaturedShowcase();
+  const track = document.querySelector("[data-featured-track]");
+  if (!track) {
+    state.featuredIndex = index;
+    renderFeaturedShowcase();
+    return;
+  }
+
+  const shiftClass = getShowcaseShiftClass(index);
+  state.showcaseIsAnimating = true;
+  track.classList.remove("is-shifting-next", "is-shifting-prev");
+
+  window.requestAnimationFrame(() => {
+    track.classList.add(shiftClass);
+
+    window.setTimeout(() => {
+      state.featuredIndex = index;
+      state.showcaseIsAnimating = false;
+      track.classList.remove(shiftClass);
+      renderFeaturedShowcase();
+    }, SHOWCASE_SHIFT_DURATION);
+  });
 }
 
 function renderFeaturedShowcase() {
@@ -197,6 +226,7 @@ function renderFeaturedShowcase() {
   }
 
   track.innerHTML = "";
+  track.classList.remove("is-shifting-next", "is-shifting-prev");
   track.onpointerleave = () => {
     clearShowcaseHoverTimer();
     state.showcaseHoverLocked = false;
