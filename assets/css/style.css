@@ -580,6 +580,174 @@ button {
   line-height: 1.2;
 }
 
+.contact-page {
+  min-height: 100vh;
+  color: var(--text-dark);
+  background: var(--bg-paper);
+}
+
+.contact-hero {
+  padding: 96px 0 72px;
+  color: var(--text-light);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(183, 43, 44, 0.24), transparent 28%),
+    linear-gradient(140deg, #050505 0%, #0f0f0f 58%, #171008 100%);
+}
+
+.contact-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: 56px;
+  align-items: end;
+}
+
+.section-kicker {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-size: 1.18rem;
+}
+
+.contact-hero h1 {
+  max-width: 780px;
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: clamp(3.6rem, 8vw, 8rem);
+  font-weight: 700;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.contact-hero h1 span {
+  display: block;
+  margin-top: 12px;
+  color: #fff;
+  font-family: var(--font-script);
+  font-size: clamp(4.4rem, 9vw, 8.8rem);
+  font-weight: 400;
+  line-height: 0.78;
+  text-transform: none;
+}
+
+.contact-hero-copy > p:last-child {
+  max-width: 660px;
+  margin: 30px 0 0;
+  color: rgba(243, 241, 234, 0.84);
+  font-size: 1.28rem;
+  line-height: 1.45;
+}
+
+.contact-primary-card {
+  min-height: 318px;
+  padding: 34px;
+  color: var(--text-dark);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.98)),
+    var(--bg-paper);
+  box-shadow: var(--shadow-heavy);
+}
+
+.contact-primary-card p {
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.contact-primary-card a {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--text-dark);
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 700;
+  line-height: 0.95;
+  word-break: break-word;
+}
+
+.contact-primary-card a:hover {
+  color: var(--artist-red);
+}
+
+.contact-primary-card span {
+  display: block;
+  max-width: 340px;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 80px 0;
+}
+
+.contact-option {
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid var(--line-light);
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.06);
+}
+
+.contact-option > span {
+  display: inline-block;
+  margin-bottom: 34px;
+  color: var(--artist-red);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.contact-option h2 {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 1.9rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact-option p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.38;
+}
+
+.contact-option .text-link {
+  color: var(--artist-red);
+}
+
+.contact-social-section {
+  padding: 62px 0;
+  color: var(--text-light);
+  background: var(--bg-black);
+}
+
+.contact-social-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.contact-social-inner h2 {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.contact-social-inner p {
+  max-width: 620px;
+  margin: 0;
+  font-size: 1.16rem;
+  line-height: 1.4;
+}
+
 .site-footer {
   padding: 44px 0 20px;
   border-top: 1px solid var(--line-dark);
@@ -631,8 +799,14 @@ button {
   .hero,
   .home-grid,
   .portfolio-grid,
+  .contact-hero-inner,
+  .contact-social-inner,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-story,
@@ -644,6 +818,10 @@ button {
 
   .home-grid-visual {
     min-height: 440px;
+  }
+
+  .contact-primary-card {
+    max-width: 560px;
   }
 
   .hero-panel {
@@ -714,6 +892,19 @@ button {
 
   .portfolio-items {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-hero {
+    padding: 72px 0 56px;
+  }
+
+  .contact-options {
+    grid-template-columns: 1fr;
+    padding: 48px 0;
+  }
+
+  .contact-option {
+    min-height: auto;
   }
 
   .footer-meta {
