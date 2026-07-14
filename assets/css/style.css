@@ -234,23 +234,24 @@ button {
 
 .showcase {
   position: relative;
-  margin: 34px 0 28px;
-  padding: 0 36px;
+  margin: 34px -28px 28px;
+  padding: 0 44px;
 }
 
 .showcase-track {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 236px;
+  min-height: 252px;
   gap: 0;
+  overflow: visible;
 }
 
 .showcase-card {
   position: relative;
-  width: 136px;
+  width: 128px;
   aspect-ratio: 0.72;
-  margin-left: -18px;
+  margin-left: -30px;
   border: 0;
   cursor: pointer;
   transition: transform 220ms ease, opacity 220ms ease, filter 220ms ease;
@@ -277,9 +278,15 @@ button {
 }
 
 .showcase-card.is-side {
-  opacity: 0.54;
-  filter: blur(0.4px);
+  opacity: 0.48;
+  filter: blur(0.5px);
   z-index: 1;
+}
+
+.showcase-card.is-far {
+  opacity: 0.22;
+  filter: blur(1.2px);
+  z-index: 0;
 }
 
 .showcase-card.is-left {
@@ -288,6 +295,14 @@ button {
 
 .showcase-card.is-right {
   transform: perspective(600px) rotateY(-28deg) scale(0.88);
+}
+
+.showcase-card.is-far-left {
+  transform: perspective(600px) rotateY(36deg) scale(0.72);
+}
+
+.showcase-card.is-far-right {
+  transform: perspective(600px) rotateY(-36deg) scale(0.72);
 }
 
 .showcase-card-caption {
@@ -592,12 +607,14 @@ button {
   }
 
   .showcase {
-    padding: 0 24px;
+    margin-left: -18px;
+    margin-right: -18px;
+    padding: 0 26px;
   }
 
   .showcase-card {
-    width: 112px;
-    margin-left: -26px;
+    width: 96px;
+    margin-left: -34px;
   }
 
   .brand {
@@ -641,8 +658,8 @@ button {
   }
 
   .showcase-card {
-    width: 88px;
-    margin-left: -22px;
+    width: 78px;
+    margin-left: -30px;
   }
 
   .portfolio-items {
