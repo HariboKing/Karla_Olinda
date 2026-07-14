@@ -1,0 +1,17 @@
+# Images
+
+Place website images in this folder.
+
+Recommended starter filenames:
+
+- `portrait.jpg`: main portrait on the homepage.
+- `stage.jpg`: performance image in the lower homepage section.
+
+For portfolio thumbnails, use clear filenames such as:
+
+- `live-01.jpg`
+- `classical-01.jpg`
+- `original-01.jpg`
+- `choir-01.jpg`
+
+Then reference those files from `assets/data/media.json`.
