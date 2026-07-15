@@ -35,11 +35,29 @@
   display: none;
 }
 
+.home-grid {
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  background: #000;
+}
+
+.home-grid-copy,
+.home-grid-visual {
+  background: #000;
+}
+
 .stage-placeholder {
-  background-image: url("../images/stage.png?v=20260715-8");
+  background-color: #000;
+  background-image: url("../images/stage.png?v=20260715-9");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @media (max-width: 980px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-portrait::before {
     background-size: auto 96%;
   }
