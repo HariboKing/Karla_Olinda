@@ -1,4 +1,4 @@
-/* Biography page layout v20260715-8 */
+/* Biography page layout v20260715-9 */
 .biography-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -181,7 +181,7 @@
 .bio-image-roots {
   background-image:
     linear-gradient(160deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.34)),
-    url("../images/rooted-in-bali.jpg"),
+    url("../images/rooted-in-bali.JPG"),
     radial-gradient(circle at 50% 25%, rgba(201, 150, 27, 0.3), transparent 25%),
     linear-gradient(140deg, #3a2b1f, #090909);
 }
@@ -361,4 +361,3 @@
     animation-duration: 2s;
   }
 }
-
