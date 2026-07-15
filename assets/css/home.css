@@ -187,3 +187,11 @@
     background-size: auto 92%;
   }
 }
+
+.feature-block h2 a {
+  color: inherit;
+}
+
+.feature-block h2 a:hover {
+  color: var(--gold-soft);
+}
