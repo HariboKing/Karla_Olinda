@@ -2,11 +2,11 @@ const mediaDataPath = "assets/data/media.json";
 
 const fallbackMediaData = {
   featured: [
-    { title: "Stage Portrait", link: "media.html", image: "" },
-    { title: "Performance Moment", link: "media.html", image: "" },
-    { title: "Editorial Still", link: "media.html", image: "" },
-    { title: "Vocal Work", link: "media.html", image: "" },
-    { title: "Theatre Moment", link: "media.html", image: "" }
+    { title: "Stage Portrait", link: "/media", image: "" },
+    { title: "Performance Moment", link: "/media", image: "" },
+    { title: "Editorial Still", link: "/media", image: "" },
+    { title: "Vocal Work", link: "/media", image: "" },
+    { title: "Theatre Moment", link: "/media", image: "" }
   ],
   groups: [
     {
@@ -72,6 +72,21 @@ function setCurrentYear() {
   document.querySelectorAll("[data-year]").forEach((element) => {
     element.textContent = new Date().getFullYear();
   });
+}
+
+function cleanCurrentUrl() {
+  const { pathname, search, hash } = window.location;
+  let cleanPath = pathname;
+
+  if (cleanPath.endsWith("/index.html")) {
+    cleanPath = cleanPath.slice(0, -"index.html".length);
+  } else if (cleanPath.endsWith(".html")) {
+    cleanPath = cleanPath.slice(0, -".html".length);
+  }
+
+  if (cleanPath !== pathname) {
+    window.history.replaceState({}, "", `${cleanPath || "/"}${search}${hash}`);
+  }
 }
 
 function setupNavigation() {
@@ -526,6 +541,7 @@ function renderMedia(data) {
   renderPortfolio(data.groups ?? []);
 }
 
+cleanCurrentUrl();
 setCurrentYear();
 setupNavigation();
 setupPlaceholderLinks();
