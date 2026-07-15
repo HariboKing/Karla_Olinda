@@ -1,4 +1,4 @@
-/* Biography page layout v20260715-9 */
+/* Biography page layout v20260715-10 */
 .biography-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -111,6 +111,10 @@
   max-width: 760px;
 }
 
+.biography-page .section-kicker {
+  color: var(--text-dark);
+}
+
 .bio-copy h2 {
   max-width: 760px;
   margin: 0 0 24px;
@@ -143,27 +147,12 @@
   box-shadow: 0 26px 58px rgba(0, 0, 0, 0.18);
 }
 
-.bio-image::after {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .bio-image-meet {
   background-image:
     linear-gradient(160deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.28)),
     url("../images/meet-karla.jpg"),
     radial-gradient(circle at 50% 28%, rgba(201, 150, 27, 0.34), transparent 24%),
     linear-gradient(140deg, #2d241b, #090909);
-}
-
-.bio-image-meet::after {
-  content: "Personal portrait";
 }
 
 .bio-image-artist {
@@ -174,20 +163,12 @@
     linear-gradient(140deg, #1d1010, #060606);
 }
 
-.bio-image-artist::after {
-  content: "Stage portrait";
-}
-
 .bio-image-roots {
   background-image:
     linear-gradient(160deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.34)),
     url("../images/rooted-in-bali.JPG"),
     radial-gradient(circle at 50% 25%, rgba(201, 150, 27, 0.3), transparent 25%),
     linear-gradient(140deg, #3a2b1f, #090909);
-}
-
-.bio-image-roots::after {
-  content: "Portrait from Bali";
 }
 
 .bio-button {
