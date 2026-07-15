@@ -1,4 +1,4 @@
-/* Biography page layout v20260715-7 */
+/* Biography page layout v20260715-8 */
 .biography-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -19,12 +19,12 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  animation: bio-intro-fade 4.4s ease-in-out forwards;
+  animation: bio-intro-fade 2.4s ease-in-out forwards;
 }
 
 @keyframes bio-intro-fade {
   0%,
-  64% {
+  42% {
     opacity: 1;
     filter: blur(0);
     visibility: visible;
@@ -49,8 +49,8 @@
   isolation: isolate;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - 76px);
-  padding: 78px 0 48px;
+  min-height: auto;
+  padding: 76px 16px 22px;
   color: var(--text-dark);
   background:
     radial-gradient(circle at 50% 22%, rgba(201, 150, 27, 0.13), transparent 30%),
@@ -63,10 +63,10 @@
 }
 
 .bio-hero h1 {
-  margin: 0 0 24px;
+  margin: 0 0 8px;
   color: var(--text-dark);
   font-family: var(--font-script);
-  font-size: clamp(5rem, 10vw, 7.8rem);
+  font-size: 5.8rem;
   font-weight: 400;
   line-height: 0.98;
 }
@@ -75,7 +75,7 @@
   max-width: 720px;
   margin: 0 auto;
   color: var(--text-dark);
-  font-size: clamp(1.18rem, 2vw, 1.45rem);
+  font-size: 1.2rem;
   line-height: 1.35;
 }
 
@@ -333,9 +333,8 @@
 }
 
 @media (max-width: 620px) {
-  .bio-hero {
-    min-height: auto;
-    padding: 62px 0 36px;
+  .bio-hero h1 {
+    font-size: 4rem;
   }
 
   .bio-panel,
@@ -359,7 +358,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .bio-intro {
-    animation-duration: 3.2s;
+    animation-duration: 2s;
   }
 }
 
