@@ -57,13 +57,15 @@ const fallbackMediaData = {
 
 const SHOWCASE_HOVER_DELAY = 1000;
 const SHOWCASE_SHIFT_DURATION = 180;
+const LATEST_VIDEO_HOVER_DELAY = 2000;
 
 const state = {
   featuredIndex: 2,
   featuredItems: [],
   showcaseHoverTimer: null,
   showcaseHoverDirection: 0,
-  showcaseIsAnimating: false
+  showcaseIsAnimating: false,
+  latestVideoHoverTimer: null
 };
 
 function setCurrentYear() {
@@ -197,6 +199,35 @@ function setupContactForm() {
 
     const subject = `Karla Olinda contact form - ${name}`;
     window.location.href = `mailto:info@jovka.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
+
+function setupLatestVideoHover() {
+  const video = document.querySelector("[data-latest-video]");
+  if (!(video instanceof HTMLVideoElement)) {
+    return;
+  }
+
+  const clearLatestVideoTimer = () => {
+    if (state.latestVideoHoverTimer === null) {
+      return;
+    }
+
+    window.clearTimeout(state.latestVideoHoverTimer);
+    state.latestVideoHoverTimer = null;
+  };
+
+  video.addEventListener("pointerenter", () => {
+    clearLatestVideoTimer();
+    state.latestVideoHoverTimer = window.setTimeout(() => {
+      state.latestVideoHoverTimer = null;
+      video.play().catch(() => {});
+    }, LATEST_VIDEO_HOVER_DELAY);
+  });
+
+  video.addEventListener("pointerleave", () => {
+    clearLatestVideoTimer();
+    video.pause();
   });
 }
 
@@ -499,6 +530,7 @@ setCurrentYear();
 setupNavigation();
 setupPlaceholderLinks();
 setupContactForm();
+setupLatestVideoHover();
 if (document.querySelector("[data-featured-track], [data-portfolio-grid]")) {
   loadMediaData();
 }
