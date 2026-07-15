@@ -166,47 +166,63 @@
 .bio-roots {
   position: relative;
   isolation: isolate;
-  display: flex;
-  align-items: center;
-  min-height: 145svh;
-  padding: 92px 0;
-  overflow: hidden;
+  min-height: 235svh;
+  padding: 0;
+  overflow: clip;
   color: var(--text-light);
   background: #050505;
+}
+
+.bio-roots-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  overflow: hidden;
 }
 
 .bio-roots-background {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   background-image:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.46)),
     url("../images/denpasar.png"),
     radial-gradient(circle at 76% 22%, rgba(201, 150, 27, 0.3), transparent 28%),
     linear-gradient(135deg, #19130b, #050505);
   background-position: center;
   background-size: cover;
+  transform: scale(1.02);
 }
 
-.bio-roots::after {
-  content: "";
+.bio-roots-overlay {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, rgba(5, 5, 5, 0.18), rgba(5, 5, 5, 0.72) 68%, rgba(5, 5, 5, 0.92));
+  z-index: 1;
+  background:
+    radial-gradient(circle at 76% 24%, rgba(201, 150, 27, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.68) 62%, rgba(5, 5, 5, 0.9));
 }
 
-.bio-roots-grid {
+.bio-roots-content {
   position: relative;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 86px 0;
 }
 
 .bio-roots-copy {
-  max-width: 780px;
-  padding: clamp(26px, 4vw, 46px);
-  background: rgba(5, 5, 5, 0.58);
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(30px, 5vw, 58px);
+  background: rgba(5, 5, 5, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(12px);
 }
 
 .bio-roots-copy h2,
@@ -216,19 +232,6 @@
 
 .bio-roots-copy h2 {
   color: var(--gold);
-}
-
-.bio-image-roots {
-  min-height: min(76svh, 760px);
-  background-image:
-    linear-gradient(160deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.42)),
-    url("../images/meet-karla.jpg"),
-    radial-gradient(circle at 50% 24%, rgba(201, 150, 27, 0.32), transparent 24%),
-    linear-gradient(140deg, #2a160d, #060606);
-}
-
-.bio-image-roots::after {
-  content: "Rooted in Bali";
 }
 
 .bio-closing {
@@ -262,40 +265,58 @@
   .bio-roots-background {
     animation: roots-background-fade linear both;
     animation-timeline: view();
-    animation-range: entry 12% exit 60%;
+    animation-range: entry 0% exit 72%;
   }
 
-  .bio-image-roots {
-    animation: roots-portrait-in linear both;
+  .bio-roots-overlay {
+    animation: roots-overlay-in linear both;
     animation-timeline: view();
-    animation-range: entry 30% cover 62%;
+    animation-range: entry 0% exit 72%;
+  }
+
+  .bio-roots-copy {
+    animation: roots-copy-in linear both;
+    animation-timeline: view();
+    animation-range: entry 38% exit 76%;
   }
 }
 
 @keyframes roots-background-fade {
   0%,
-  38% {
+  32% {
     filter: blur(0);
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.02);
   }
 
   100% {
-    filter: blur(8px);
-    opacity: 0.34;
-    transform: scale(1.04);
+    filter: blur(7px);
+    opacity: 0.44;
+    transform: scale(1.08);
   }
 }
 
-@keyframes roots-portrait-in {
-  0% {
-    opacity: 0;
-    transform: translateX(42px);
+@keyframes roots-overlay-in {
+  0%,
+  34% {
+    opacity: 0.18;
   }
 
   100% {
     opacity: 1;
-    transform: translateX(0);
+  }
+}
+
+@keyframes roots-copy-in {
+  0%,
+  26% {
+    opacity: 0;
+    transform: translateY(42px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -305,8 +326,7 @@
   }
 
   .bio-panel-grid,
-  .bio-panel-grid-reverse,
-  .bio-roots-grid {
+  .bio-panel-grid-reverse {
     grid-template-columns: 1fr;
   }
 
@@ -334,6 +354,16 @@
   .bio-roots,
   .bio-closing {
     padding: 54px 0;
+  }
+
+  .bio-roots {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .bio-roots-stage,
+  .bio-roots-content {
+    min-height: 100svh;
   }
 
   .bio-copy h2 {
