@@ -1,4 +1,4 @@
-/* Biography page layout v20260715-4 */
+/* Biography page layout v20260715-5 */
 .biography-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -8,10 +8,19 @@
 }
 
 .bio-hero {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
-  min-height: 58svh;
+  min-height: calc(100svh - 76px);
   padding: 78px 0 48px;
+  color: var(--text-light);
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.42), rgba(5, 5, 5, 0.74)),
+    url("../images/denpasar.png"),
+    linear-gradient(135deg, #19130b, #050505);
+  background-position: center;
+  background-size: cover;
   text-align: center;
 }
 
@@ -21,7 +30,7 @@
 
 .bio-hero h1 {
   margin: 0 0 24px;
-  color: var(--text-dark);
+  color: #fff;
   font-family: var(--font-script);
   font-size: clamp(5rem, 10vw, 7.8rem);
   font-weight: 400;
@@ -31,6 +40,7 @@
 .bio-hero p:last-child {
   max-width: 720px;
   margin: 0 auto;
+  color: rgba(255, 255, 255, 0.88);
   font-size: clamp(1.18rem, 2vw, 1.45rem);
   line-height: 1.35;
 }
@@ -167,26 +177,22 @@
 .bio-roots {
   position: relative;
   isolation: isolate;
-  min-height: 235svh;
-  padding: 0;
-  overflow: clip;
-  color: var(--text-light);
+  min-height: calc(100svh - 76px);
+  padding: 92px 0;
+  overflow: hidden;
+  color: var(--text-dark);
   background: #050505;
 }
 
 .bio-roots-stage {
-  position: sticky;
-  top: 0;
+  position: relative;
   isolation: isolate;
-  display: grid;
-  place-items: center;
-  min-height: 100svh;
-  overflow: hidden;
+  min-height: calc(100svh - 260px);
 }
 
 .bio-roots-background {
   position: absolute;
-  inset: 0;
+  inset: -92px 0;
   z-index: 0;
   background-image:
     url("../images/denpasar.png"),
@@ -194,16 +200,16 @@
     linear-gradient(135deg, #19130b, #050505);
   background-position: center;
   background-size: cover;
-  transform: scale(1.02);
 }
 
 .bio-roots-overlay {
   position: absolute;
-  inset: 0;
+  inset: -92px 0;
   z-index: 1;
   background:
-    radial-gradient(circle at 76% 24%, rgba(201, 150, 27, 0.14), transparent 32%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.68) 62%, rgba(5, 5, 5, 0.9));
+    radial-gradient(circle at 78% 22%, rgba(201, 150, 27, 0.14), transparent 28%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.2), rgba(5, 5, 5, 0.62)),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.28), rgba(5, 5, 5, 0.36));
 }
 
 .bio-roots-content {
@@ -211,24 +217,23 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 100svh;
-  padding: 86px 0;
+  justify-content: flex-start;
+  min-height: calc(100svh - 260px);
+  padding: 0;
 }
 
 .bio-roots-copy {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: clamp(30px, 5vw, 58px);
-  background: rgba(5, 5, 5, 0.64);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(12px);
+  max-width: 780px;
+  margin: 0;
+  padding: clamp(30px, 5vw, 56px);
+  background: rgba(251, 250, 247, 0.94);
+  border: 1px solid rgba(201, 150, 27, 0.36);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
 }
 
 .bio-roots-copy h2,
 .bio-roots-copy p {
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 .bio-roots-copy h2 {
@@ -260,65 +265,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-}
-
-@supports (animation-timeline: view()) {
-  .bio-roots-background {
-    animation: roots-background-fade linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 72%;
-  }
-
-  .bio-roots-overlay {
-    animation: roots-overlay-in linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 72%;
-  }
-
-  .bio-roots-copy {
-    animation: roots-copy-in linear both;
-    animation-timeline: view();
-    animation-range: entry 38% exit 76%;
-  }
-}
-
-@keyframes roots-background-fade {
-  0%,
-  32% {
-    filter: blur(0);
-    opacity: 1;
-    transform: scale(1.02);
-  }
-
-  100% {
-    filter: blur(7px);
-    opacity: 0.44;
-    transform: scale(1.08);
-  }
-}
-
-@keyframes roots-overlay-in {
-  0%,
-  34% {
-    opacity: 0.18;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes roots-copy-in {
-  0%,
-  26% {
-    opacity: 0;
-    transform: translateY(42px) scale(0.98);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 @media (max-width: 980px) {
