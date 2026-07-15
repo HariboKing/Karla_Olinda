@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Ms+Madi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/home.css?v=20260715-11">
+  <link rel="stylesheet" href="assets/css/home.css?v=20260715-12">
 </head>
 <body class="page-home">
   <header class="site-header">
@@ -109,18 +109,27 @@
 
     <section class="latest-update" aria-labelledby="latest-update-title">
       <div class="container latest-update-inner">
-        <div>
+        <div class="latest-update-copy">
           <h2 id="latest-update-title">Latest Update</h2>
           <p>
             A recent performance, lesson fragment or new song can be featured here as Karla's
             newest video update.
           </p>
         </div>
-        <div class="latest-video-frame">
-          <video controls preload="metadata" poster="assets/images/stage.png?v=20260715-9">
-            <source src="assets/videos/latest-update.mp4" type="video/mp4">
-            Your browser does not support embedded video.
-          </video>
+        <div class="latest-video-area">
+          <div class="latest-video-frame">
+            <video controls preload="metadata" data-latest-video>
+              <source src="assets/videos/latest-update.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="latest-video-details">
+            <div class="latest-video-meta">
+              <span>Date: XXXX-XXXX</span>
+              <span>Location: To be added</span>
+            </div>
+            <p>Details, context and notes for the newest update can be added here.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -153,6 +162,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=20260715-11"></script>
+  <script src="assets/js/main.js?v=20260715-12"></script>
 </body>
 </html>
