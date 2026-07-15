@@ -35,6 +35,10 @@
   display: none;
 }
 
+.hero-story {
+  background-color: #f2e4cf;
+}
+
 .home-grid {
   grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
   background: #000;
@@ -51,6 +55,29 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.site-footer {
+  background: #f8f3e8;
+  border-top-color: rgba(18, 18, 18, 0.12);
+  color: var(--text-dark);
+}
+
+.site-footer h3 {
+  color: var(--gold);
+}
+
+.site-footer p,
+.site-footer a {
+  color: var(--text-dark);
+}
+
+.site-footer a:hover {
+  color: var(--artist-red);
+}
+
+.site-footer .footer-meta {
+  border-top-color: rgba(18, 18, 18, 0.12);
 }
 
 @media (max-width: 980px) {
