@@ -110,10 +110,12 @@ function setupDirectContactForm() {
     clearError();
 
     try {
+      const payload = Object.fromEntries(new FormData(form).entries());
       const response = await fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: JSON.stringify(payload),
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json"
         }
       });
