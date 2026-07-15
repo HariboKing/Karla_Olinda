@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Ms+Madi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/contact.css?v=20260715-14">
+  <link rel="stylesheet" href="assets/css/contact.css?v=20260715-15">
 </head>
 <body class="page-contact">
   <header class="site-header">
@@ -39,10 +39,13 @@
           <h1>Connect with <span>Karla Olinda</span></h1>
         </div>
 
-        <aside class="contact-primary-card" aria-label="Main contact email">
+        <aside class="contact-primary-card" aria-label="General contact details">
           <p>General contact</p>
-          <a href="mailto:info@jovka.org?subject=Karla%20Olinda%20contact">info@jovka.org</a>
-          <span>Include dates, location and context when relevant.</span>
+          <div class="contact-card-details">
+            <a class="contact-card-email" href="mailto:info@jovka.org?subject=Karla%20Olinda%20contact">info@jovka.org</a>
+            <a class="contact-card-phone" href="tel:+31620573661">+31 6 2057 3661</a>
+            <a class="contact-card-button" href="https://www.instagram.com/karlalalind/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
         </aside>
       </div>
     </section>
@@ -52,12 +55,12 @@
         <p class="section-kicker">Message</p>
         <h2>Contact form</h2>
         <p>
-          This form prepares an email to <strong>info@jovka.org</strong>. Fill in your name
-          and at least one contact detail so the request can be answered.
+          This form sends your message directly to <strong>info@jovka.org</strong>. Fill in
+          your name and email address. For lesson inquiries, a phone number is required.
         </p>
       </div>
 
-      <form class="contact-form" action="mailto:info@jovka.org" method="post" enctype="text/plain" data-contact-form novalidate>
+      <form class="contact-form" action="/contact.php" method="post" data-direct-contact-form novalidate>
         <div class="form-grid">
           <div class="form-field">
             <label for="contact-name">Name <span>Required</span></label>
@@ -65,12 +68,12 @@
           </div>
 
           <div class="form-field">
-            <label for="contact-email">Email address <span>Email or phone required</span></label>
-            <input id="contact-email" name="email" type="email" autocomplete="email" data-contact-email>
+            <label for="contact-email">Email address <span>Required</span></label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required data-contact-email>
           </div>
 
           <div class="form-field">
-            <label for="contact-phone">Phone number <span>Email or phone required</span></label>
+            <label for="contact-phone">Phone number <span data-phone-requirement>Required for lessons</span></label>
             <input id="contact-phone" name="phone" type="tel" autocomplete="tel" data-contact-phone>
           </div>
 
@@ -89,13 +92,24 @@
           <textarea id="contact-message" name="message" rows="7" data-contact-message></textarea>
         </div>
 
-        <p class="form-error" data-contact-error hidden>Please fill in your name and at least an email address or phone number.</p>
+        <div class="form-field-hidden" aria-hidden="true">
+          <label for="contact-website">Website</label>
+          <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" data-contact-website>
+        </div>
+
+        <p class="form-error" data-contact-error hidden>Please fill in your name and email address. Phone number is required for lesson inquiries.</p>
 
         <div class="form-actions">
-          <button class="contact-submit" type="submit">Send message</button>
-          <p>The message opens in your mail app before it is sent.</p>
+          <button class="contact-submit" type="submit" data-contact-submit>Send message</button>
+          <p>Your message is sent directly to Karla's contact mailbox.</p>
         </div>
       </form>
+
+      <div class="contact-success" data-contact-success hidden tabindex="-1">
+        <p class="section-kicker">Message sent</p>
+        <h2>Thank you</h2>
+        <p>You will be contacted within 48 hours.</p>
+      </div>
     </section>
 
     <section class="contact-social-section">
@@ -141,5 +155,6 @@
   </footer>
 
   <script src="assets/js/main.js?v=20260715-13"></script>
+  <script src="assets/js/contact.js?v=20260715-15"></script>
 </body>
 </html>
