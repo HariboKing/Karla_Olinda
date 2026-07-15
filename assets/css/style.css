@@ -756,7 +756,7 @@ button {
 
 .site-footer-light {
   border-top-color: var(--line-light);
-  background: rgba(250, 248, 242, 0.95);
+  background: rgba(100, 100, 100, 0.95);
   color: var(--text-dark);
 }
 
