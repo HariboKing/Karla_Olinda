@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Ms+Madi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/contact.css?v=20260715-15">
+  <link rel="stylesheet" href="assets/css/contact.css?v=20260715-16">
 </head>
 <body class="page-contact">
   <header class="site-header">
@@ -60,7 +60,10 @@
         </p>
       </div>
 
-      <form class="contact-form" action="/contact.php" method="post" data-direct-contact-form novalidate>
+      <form class="contact-form" action="https://formsubmit.co/ajax/info@jovka.org" method="post" data-direct-contact-form novalidate>
+        <input type="hidden" name="_subject" value="Karla Olinda website contact">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <div class="form-grid">
           <div class="form-field">
             <label for="contact-name">Name <span>Required</span></label>
@@ -155,6 +158,6 @@
   </footer>
 
   <script src="assets/js/main.js?v=20260715-13"></script>
-  <script src="assets/js/contact.js?v=20260715-15"></script>
+  <script src="assets/js/contact.js?v=20260715-16"></script>
 </body>
 </html>
