@@ -443,7 +443,7 @@ button {
 .stage-placeholder {
   height: 100%;
   background-color: var(--media-empty);
-  background-image: url("../images/stage.jpg");
+  background-image: url("../images/stage.png");
   background-position: center;
   background-size: cover;
 }
