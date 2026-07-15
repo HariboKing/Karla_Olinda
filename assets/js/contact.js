@@ -120,8 +120,11 @@ function setupDirectContactForm() {
         }
       });
 
-      if (!response.ok) {
-        throw new Error("The message could not be sent.");
+      const result = await response.json().catch(() => null);
+      const wasSent = result?.success === true || result?.success === "true";
+
+      if (!response.ok || !wasSent) {
+        throw new Error(result?.message || "The message could not be sent.");
       }
 
       form.reset();
