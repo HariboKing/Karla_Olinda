@@ -2,27 +2,27 @@
   "featured": [
     {
       "title": "Stage Portrait",
-      "link": "media.html",
+      "link": "/media",
       "image": ""
     },
     {
       "title": "Performance Moment",
-      "link": "media.html",
+      "link": "/media",
       "image": ""
     },
     {
       "title": "Editorial Still",
-      "link": "media.html",
+      "link": "/media",
       "image": ""
     },
     {
       "title": "Vocal Work",
-      "link": "media.html",
+      "link": "/media",
       "image": ""
     },
     {
       "title": "Theatre Moment",
-      "link": "media.html",
+      "link": "/media",
       "image": ""
     }
   ],
