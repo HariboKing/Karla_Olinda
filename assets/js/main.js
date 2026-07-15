@@ -55,14 +55,14 @@ const fallbackMediaData = {
   ]
 };
 
-const SHOWCASE_HOVER_DELAY = 650;
+const SHOWCASE_HOVER_DELAY = 1000;
 const SHOWCASE_SHIFT_DURATION = 180;
 
 const state = {
   featuredIndex: 2,
   featuredItems: [],
   showcaseHoverTimer: null,
-  showcaseHoverLocked: false,
+  showcaseHoverDirection: 0,
   showcaseIsAnimating: false
 };
 
@@ -261,6 +261,49 @@ function clearShowcaseHoverTimer() {
   state.showcaseHoverTimer = null;
 }
 
+function stopShowcaseHoverLoop() {
+  clearShowcaseHoverTimer();
+  state.showcaseHoverDirection = 0;
+}
+
+function scheduleShowcaseHoverStep() {
+  clearShowcaseHoverTimer();
+
+  if (state.showcaseHoverDirection === 0) {
+    return;
+  }
+
+  state.showcaseHoverTimer = window.setTimeout(() => {
+    state.showcaseHoverTimer = null;
+
+    if (state.showcaseHoverDirection === 0) {
+      return;
+    }
+
+    if (state.showcaseIsAnimating) {
+      scheduleShowcaseHoverStep();
+      return;
+    }
+
+    const total = state.featuredItems.length;
+    if (total === 0) {
+      stopShowcaseHoverLoop();
+      return;
+    }
+
+    const nextIndex = (state.featuredIndex + state.showcaseHoverDirection + total) % total;
+    moveFeaturedShowcaseTo(nextIndex, {
+      preserveHoverLoop: true,
+      onComplete: scheduleShowcaseHoverStep
+    });
+  }, SHOWCASE_HOVER_DELAY);
+}
+
+function startShowcaseHoverLoop(direction) {
+  state.showcaseHoverDirection = direction;
+  scheduleShowcaseHoverStep();
+}
+
 function getShowcaseShiftClass(index) {
   const total = state.featuredItems.length;
   const forwardDistance = (index - state.featuredIndex + total) % total;
@@ -269,10 +312,13 @@ function getShowcaseShiftClass(index) {
   return forwardDistance <= backwardDistance ? "is-shifting-next" : "is-shifting-prev";
 }
 
-function moveFeaturedShowcaseTo(index) {
-  clearShowcaseHoverTimer();
+function moveFeaturedShowcaseTo(index, options = {}) {
+  if (!options.preserveHoverLoop) {
+    stopShowcaseHoverLoop();
+  }
 
   if (index === state.featuredIndex || state.showcaseIsAnimating) {
+    options.onComplete?.();
     return;
   }
 
@@ -280,6 +326,7 @@ function moveFeaturedShowcaseTo(index) {
   if (!track) {
     state.featuredIndex = index;
     renderFeaturedShowcase();
+    options.onComplete?.();
     return;
   }
 
@@ -295,6 +342,7 @@ function moveFeaturedShowcaseTo(index) {
       state.showcaseIsAnimating = false;
       track.classList.remove(shiftClass);
       renderFeaturedShowcase();
+      options.onComplete?.();
     }, SHOWCASE_SHIFT_DURATION);
   });
 }
@@ -307,10 +355,7 @@ function renderFeaturedShowcase() {
 
   track.innerHTML = "";
   track.classList.remove("is-shifting-next", "is-shifting-prev");
-  track.onpointerleave = () => {
-    clearShowcaseHoverTimer();
-    state.showcaseHoverLocked = false;
-  };
+  track.onpointerleave = stopShowcaseHoverLoop;
 
   const total = state.featuredItems.length;
   const offsets = total >= 5 ? [-2, -1, 0, 1, 2] : [-1, 0, 1];
@@ -323,23 +368,14 @@ function renderFeaturedShowcase() {
 
     if (offset !== 0) {
       card.addEventListener("pointerenter", () => {
-        if (state.showcaseHoverLocked) {
-          return;
-        }
-
-        clearShowcaseHoverTimer();
-        state.showcaseHoverTimer = window.setTimeout(() => {
-          state.showcaseHoverLocked = true;
-          moveFeaturedShowcaseTo(index);
-        }, SHOWCASE_HOVER_DELAY);
+        startShowcaseHoverLoop(offset > 0 ? 1 : -1);
       });
-
-      card.addEventListener("pointerleave", clearShowcaseHoverTimer);
+    } else {
+      card.addEventListener("pointerenter", stopShowcaseHoverLoop);
     }
 
     card.addEventListener("click", () => {
       if (offset !== 0) {
-        state.showcaseHoverLocked = true;
         moveFeaturedShowcaseTo(index);
         return;
       }
