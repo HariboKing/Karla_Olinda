@@ -15,7 +15,7 @@
 
 .hero-portrait::before {
   z-index: -2;
-  background-image: url("../images/portrait.JPG");
+  background-image: url("../images/portrait.jpg");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -33,6 +33,10 @@
 
 .portrait-frame {
   display: none;
+}
+
+.stage-placeholder {
+  background-image: url("../images/stage.JPG");
 }
 
 @media (max-width: 980px) {
