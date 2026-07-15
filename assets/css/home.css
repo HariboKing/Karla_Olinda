@@ -36,7 +36,7 @@
 }
 
 .stage-placeholder {
-  background-image: url("../images/stage.png");
+  background-image: url("../images/stage.png?v=20260715-8");
 }
 
 @media (max-width: 980px) {
