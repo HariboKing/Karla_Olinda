@@ -53,6 +53,42 @@
   background: linear-gradient(180deg, var(--gold), var(--artist-red));
 }
 
+.contact-card-details {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-primary-card .contact-card-email {
+  margin-bottom: 0;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+}
+
+.contact-primary-card .contact-card-phone {
+  margin-bottom: 4px;
+  color: var(--artist-red);
+  font-size: clamp(1.35rem, 2.2vw, 2.1rem);
+}
+
+.contact-primary-card .contact-card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-height: 42px;
+  margin-bottom: 0;
+  padding: 0 18px;
+  color: #fff;
+  background: var(--artist-red);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.contact-primary-card .contact-card-button:hover {
+  color: #fff;
+  background: var(--gold);
+}
+
 .contact-form-section {
   display: grid;
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
@@ -153,6 +189,10 @@
   font-size: 1.02rem;
 }
 
+.form-field-hidden {
+  display: none;
+}
+
 .form-actions {
   display: flex;
   align-items: center;
@@ -176,12 +216,51 @@
   background: var(--gold);
 }
 
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
 .form-actions p {
   max-width: 300px;
   margin: 0;
   color: rgba(18, 18, 18, 0.64);
   font-size: 0.98rem;
   line-height: 1.25;
+}
+
+.contact-form-section.is-complete {
+  display: block;
+}
+
+.contact-form-section.is-complete .contact-form-intro,
+.contact-form-section.is-complete .contact-form {
+  display: none;
+}
+
+.contact-success {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 54px;
+  color: var(--text-dark);
+  background: #fff;
+  border: 1px solid rgba(201, 150, 27, 0.42);
+  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.contact-success h2 {
+  margin: 0 0 16px;
+  color: var(--gold);
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.contact-success p:last-child {
+  margin: 0;
+  font-size: 1.28rem;
+  line-height: 1.38;
 }
 
 @media (max-width: 980px) {
@@ -230,5 +309,9 @@
 
   .contact-form {
     padding: 22px;
+  }
+
+  .contact-success {
+    padding: 34px 22px;
   }
 }
