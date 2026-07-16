@@ -1,4 +1,4 @@
-/* Lessons page layout v20260716-1 */
+/* Lessons page layout v20260716-2 */
 .lessons-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -97,7 +97,6 @@
 
 .lessons-copy h2,
 .lessons-section-heading h2,
-.expect-grid h2,
 .lessons-cta h2 {
   margin: 0 0 24px;
   color: var(--gold);
@@ -108,8 +107,7 @@
 }
 
 .lessons-copy p,
-.lessons-section-heading p,
-.expect-grid p {
+.lessons-section-heading p {
   max-width: 780px;
   margin: 0 0 18px;
   font-size: clamp(1.15rem, 1.8vw, 1.38rem);
@@ -166,7 +164,7 @@
 .lesson-card {
   position: relative;
   min-height: 360px;
-  padding: 32px 28px;
+  padding: 32px 24px;
   overflow: hidden;
   border: 1px solid rgba(224, 197, 128, 0.28);
   background:
@@ -195,13 +193,12 @@
 .lesson-card h3 {
   margin: 18px 0 24px;
   color: #fff;
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
-  line-height: 0.9;
+  font-size: clamp(1.85rem, 2.7vw, 2.85rem);
+  line-height: 0.94;
   text-transform: uppercase;
 }
 
-.lesson-card ul,
-.expect-list {
+.lesson-card ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -211,12 +208,14 @@
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.15rem;
+  font-size: 1.08rem;
 }
 
-.lessons-audience {
+.lessons-teaching-gallery {
   padding: 86px 0;
-  background: #fbfaf7;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(201, 150, 27, 0.1), transparent 28%),
+    #fbfaf7;
 }
 
 .lessons-section-heading-left {
@@ -224,63 +223,44 @@
   text-align: left;
 }
 
-.audience-grid {
+.teaching-gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-rows: repeat(2, minmax(220px, 1fr));
+  gap: 18px;
 }
 
-.audience-grid div {
-  min-height: 154px;
-  padding: 24px;
-  display: flex;
-  align-items: end;
-  color: var(--text-dark);
-  background: #fff;
+.teaching-photo {
+  min-height: 280px;
+  margin: 0;
   border: 1px solid var(--line-light);
-  font-size: clamp(1.5rem, 2.4vw, 2.4rem);
-  font-weight: 700;
-  line-height: 0.96;
-  text-transform: uppercase;
+  background-color: var(--media-empty);
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.14);
 }
 
-.audience-grid div::before {
-  content: "\2713";
-  margin-right: 12px;
-  color: var(--artist-red);
+.teaching-photo-one {
+  grid-row: span 2;
+  min-height: 580px;
+  background-image:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.02), rgba(5, 5, 5, 0.22)),
+    url("../images/lessons-teaching-01.jpg"),
+    linear-gradient(140deg, #221d16, #d7c9ae);
 }
 
-.expect-section {
-  padding: 86px 0;
-  color: var(--text-dark);
-  background:
-    radial-gradient(circle at 18% 20%, rgba(183, 43, 44, 0.1), transparent 26%),
-    linear-gradient(90deg, #efe6d4 0%, #efe6d4 34%, #fbfaf7 34%, #fbfaf7 100%);
+.teaching-photo-two {
+  background-image:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.02), rgba(5, 5, 5, 0.18)),
+    url("../images/lessons-teaching-02.jpg"),
+    linear-gradient(140deg, #f4efe6, #b79a5d);
 }
 
-.expect-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
-  gap: clamp(34px, 5vw, 72px);
-  align-items: start;
-}
-
-.expect-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.expect-list li {
-  min-height: 86px;
-  padding: 20px 22px;
-  display: flex;
-  align-items: center;
-  color: var(--text-light);
-  background: #080808;
-  font-size: 1.28rem;
-  font-weight: 700;
-  text-transform: uppercase;
+.teaching-photo-three {
+  background-image:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.02), rgba(5, 5, 5, 0.2)),
+    url("../images/lessons-teaching-03.jpg"),
+    linear-gradient(140deg, #16110e, #8c2e28);
 }
 
 .lesson-info {
@@ -399,14 +379,9 @@
 @media (max-width: 980px) {
   .lessons-split,
   .lesson-card-grid,
-  .audience-grid,
-  .expect-grid,
+  .teaching-gallery,
   .faq-grid {
     grid-template-columns: 1fr;
-  }
-
-  .audience-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lessons-philosophy {
@@ -415,6 +390,11 @@
   }
 
   .lessons-photo {
+    min-height: 520px;
+  }
+
+  .teaching-photo-one {
+    grid-row: auto;
     min-height: 520px;
   }
 }
@@ -435,8 +415,7 @@
 
   .lessons-philosophy,
   .lesson-types,
-  .lessons-audience,
-  .expect-section,
+  .lessons-teaching-gallery,
   .lesson-info,
   .lessons-faq,
   .lessons-cta {
@@ -445,13 +424,10 @@
 
   .lessons-copy h2,
   .lessons-section-heading h2,
-  .expect-grid h2,
   .lessons-cta h2 {
     font-size: clamp(2.7rem, 14vw, 4.4rem);
   }
 
-  .audience-grid,
-  .expect-list,
   .info-list div {
     grid-template-columns: 1fr;
   }
