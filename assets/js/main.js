@@ -58,6 +58,7 @@ const fallbackMediaData = {
 const SHOWCASE_HOVER_DELAY = 1000;
 const SHOWCASE_SHIFT_DURATION = 180;
 const LATEST_VIDEO_HOVER_DELAY = 2000;
+const PORTFOLIO_FULLSCREEN_QUERY = "(max-width: 760px)";
 
 const state = {
   featuredIndex: 2,
@@ -65,7 +66,9 @@ const state = {
   showcaseHoverTimer: null,
   showcaseHoverDirection: 0,
   showcaseIsAnimating: false,
-  latestVideoHoverTimer: null
+  latestVideoHoverTimer: null,
+  portfolioOverlay: null,
+  portfolioOverlayLastFocus: null
 };
 
 function setCurrentYear() {
@@ -265,6 +268,114 @@ function applyMediaImage(element, image) {
 
   element.classList.add("has-image");
   element.style.setProperty("--media-image", `url("${image}")`);
+}
+
+function shouldOpenPortfolioFullscreen() {
+  return window.matchMedia(PORTFOLIO_FULLSCREEN_QUERY).matches;
+}
+
+function closePortfolioOverlay() {
+  const overlay = state.portfolioOverlay;
+  if (!(overlay instanceof HTMLElement) || overlay.hidden) {
+    return;
+  }
+
+  overlay.hidden = true;
+  document.body.classList.remove("portfolio-modal-open");
+
+  if (state.portfolioOverlayLastFocus instanceof HTMLElement) {
+    state.portfolioOverlayLastFocus.focus();
+  }
+
+  state.portfolioOverlayLastFocus = null;
+}
+
+function getPortfolioOverlay() {
+  if (state.portfolioOverlay instanceof HTMLElement) {
+    return state.portfolioOverlay;
+  }
+
+  const overlay = document.createElement("div");
+  overlay.className = "portfolio-modal";
+  overlay.hidden = true;
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-labelledby", "portfolio-modal-title");
+
+  overlay.innerHTML = `
+    <button class="portfolio-modal-close" type="button" data-portfolio-modal-close>Close</button>
+    <article class="portfolio-modal-card">
+      <div class="portfolio-modal-image" data-portfolio-modal-image role="img"></div>
+      <div class="portfolio-modal-copy">
+        <h2 class="portfolio-modal-title" id="portfolio-modal-title" data-portfolio-modal-title></h2>
+        <div class="portfolio-modal-meta">
+          <span data-portfolio-modal-date></span>
+          <span data-portfolio-modal-location></span>
+        </div>
+        <p class="portfolio-modal-description" data-portfolio-modal-description></p>
+        <a class="portfolio-modal-link" data-portfolio-modal-link target="_blank" rel="noreferrer">Open media</a>
+      </div>
+    </article>
+  `;
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) {
+      closePortfolioOverlay();
+    }
+  });
+
+  overlay.querySelector("[data-portfolio-modal-close]")?.addEventListener("click", closePortfolioOverlay);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closePortfolioOverlay();
+    }
+  });
+
+  document.body.appendChild(overlay);
+  state.portfolioOverlay = overlay;
+  return overlay;
+}
+
+function setTextContent(parent, selector, value) {
+  const element = parent.querySelector(selector);
+  if (element instanceof HTMLElement) {
+    element.textContent = value;
+  }
+}
+
+function openPortfolioOverlay(item, trigger) {
+  const overlay = getPortfolioOverlay();
+  const image = overlay.querySelector("[data-portfolio-modal-image]");
+  const link = overlay.querySelector("[data-portfolio-modal-link]");
+
+  state.portfolioOverlayLastFocus = trigger instanceof HTMLElement ? trigger : document.activeElement;
+
+  if (image instanceof HTMLElement) {
+    image.className = "portfolio-modal-image";
+    image.style.removeProperty("--media-image");
+    image.setAttribute("aria-label", item.title);
+    applyMediaImage(image, item.image);
+  }
+
+  setTextContent(overlay, "[data-portfolio-modal-title]", item.title);
+  setTextContent(overlay, "[data-portfolio-modal-date]", getDetailValue(item.date, "XXXX-XXXX"));
+  setTextContent(overlay, "[data-portfolio-modal-location]", getDetailValue(item.location, "Leeg"));
+  setTextContent(overlay, "[data-portfolio-modal-description]", getDetailValue(item.description, "Leeg"));
+
+  if (link instanceof HTMLAnchorElement) {
+    if (hasUsableLink(item.link)) {
+      link.hidden = false;
+      link.href = item.link;
+    } else {
+      link.hidden = true;
+      link.removeAttribute("href");
+    }
+  }
+
+  overlay.hidden = false;
+  document.body.classList.add("portfolio-modal-open");
+  overlay.querySelector("[data-portfolio-modal-close]")?.focus();
 }
 
 function createShowcaseCard(item, roleClass) {
@@ -481,6 +592,24 @@ function renderPortfolio(groups) {
       } else {
         entry.tabIndex = 0;
       }
+
+      entry.addEventListener("click", (event) => {
+        if (!shouldOpenPortfolioFullscreen()) {
+          return;
+        }
+
+        event.preventDefault();
+        openPortfolioOverlay(item, entry);
+      });
+
+      entry.addEventListener("keydown", (event) => {
+        if (!shouldOpenPortfolioFullscreen() || (event.key !== "Enter" && event.key !== " ")) {
+          return;
+        }
+
+        event.preventDefault();
+        openPortfolioOverlay(item, entry);
+      });
 
       const image = document.createElement("div");
       image.className = "portfolio-item-image";
