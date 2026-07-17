@@ -1,4 +1,4 @@
-/* Lessons page layout v20260716-2 */
+/* Lessons page layout v20260717-1 */
 .lessons-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -76,6 +76,47 @@
   color: rgba(255, 255, 255, 0.86);
   font-size: 1.24rem;
   line-height: 1.42;
+}
+
+.lesson-pathways {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 900px;
+  margin-top: 34px;
+}
+
+.lesson-pathway-card {
+  min-height: 210px;
+  padding: 24px;
+  border: 1px solid rgba(224, 197, 128, 0.32);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)),
+    rgba(8, 8, 8, 0.72);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+}
+
+.lesson-pathway-card span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--artist-red);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.lesson-pathway-card h2 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(2rem, 3.4vw, 3.35rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.lesson-pathway-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.08rem;
+  line-height: 1.34;
 }
 
 .lessons-philosophy {
@@ -157,8 +198,10 @@
 
 .lesson-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
 .lesson-card {
@@ -269,7 +312,36 @@
 }
 
 .lesson-info-inner {
-  max-width: 980px;
+  max-width: 1120px;
+}
+
+.lesson-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.lesson-info-card {
+  padding: 30px;
+  border: 1px solid var(--line-light);
+  background:
+    linear-gradient(145deg, rgba(201, 150, 27, 0.08), transparent 42%),
+    #fff;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
+}
+
+.lesson-info-card-alt {
+  background:
+    linear-gradient(145deg, rgba(183, 43, 44, 0.08), transparent 42%),
+    #fff;
+}
+
+.lesson-info-card h3 {
+  margin: 0 0 24px;
+  color: var(--text-dark);
+  font-size: clamp(2.2rem, 4vw, 3.9rem);
+  line-height: 0.9;
+  text-transform: uppercase;
 }
 
 .info-list {
@@ -379,6 +451,8 @@
 @media (max-width: 980px) {
   .lessons-split,
   .lesson-card-grid,
+  .lesson-info-grid,
+  .lesson-pathways,
   .teaching-gallery,
   .faq-grid {
     grid-template-columns: 1fr;
@@ -411,6 +485,10 @@
 
   .lessons-hero h1 span {
     font-size: 5rem;
+  }
+
+  .lesson-pathway-card {
+    min-height: auto;
   }
 
   .lessons-philosophy,
