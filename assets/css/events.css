@@ -1,4 +1,4 @@
-/* Projects & Events service page v20260718-1 */
+/* Projects & Events service page v20260718-2 */
 .events-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -160,8 +160,8 @@
 .events-service-grid h3 {
   margin: 18px 0 14px;
   color: #fff;
-  font-size: clamp(1.9rem, 3vw, 3rem);
-  line-height: 0.9;
+  font-size: clamp(1.35rem, 1.8vw, 2.05rem);
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -179,37 +179,41 @@
 
 .events-split {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
   gap: clamp(36px, 5vw, 72px);
-  align-items: center;
+  align-items: start;
 }
 
 .evaluation-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .evaluation-list span {
-  min-height: 116px;
+  min-height: 64px;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 14px 16px;
   color: var(--text-dark);
   background: #fff;
   border: 1px solid var(--line-light);
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.08);
-  font-size: clamp(1.35rem, 2.1vw, 2.1rem);
+  font-size: clamp(1rem, 1.25vw, 1.35rem);
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .evaluation-list span:first-child {
-  grid-row: span 2;
-  min-height: 246px;
+  min-height: 64px;
   color: #fff;
   background: var(--artist-red);
+}
+
+.jury-evaluation .events-copy h2 {
+  max-width: 820px;
+  font-size: clamp(2.35rem, 5vw, 4.8rem);
 }
 
 .events-experience-brief {
@@ -306,7 +310,7 @@
 
   .evaluation-list span:first-child {
     grid-row: auto;
-    min-height: 116px;
+    min-height: 64px;
   }
 }
 
