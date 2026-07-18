@@ -645,6 +645,14 @@ function renderPortfolio(groups) {
     });
 
     section.appendChild(items);
+
+    if (group.id === "projects-and-events") {
+      const note = document.createElement("p");
+      note.className = "media-inline-note media-group-note";
+      note.innerHTML = 'Looking for artistic support, jury work or cultural events? <a href="/events">Click here to learn more about Projects &amp; Events.</a>';
+      section.appendChild(note);
+    }
+
     container.appendChild(section);
   });
 }
