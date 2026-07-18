@@ -1,4 +1,4 @@
-/* Media page additions v20260718-2 */
+/* Media page additions v20260718-3 */
 .media-inline-note {
   max-width: 760px;
   margin: 12px auto 0;
@@ -6,10 +6,17 @@
   font-size: 0.98rem;
   font-weight: 700;
   line-height: 1.28;
+  text-align: center;
 }
 
 .media-inline-note a {
   color: var(--artist-red);
   text-decoration: underline;
   text-underline-offset: 0.18em;
+}
+
+.media-group-note {
+  margin-top: 16px;
+  padding: 0 8px;
+  font-size: 0.94rem;
 }
