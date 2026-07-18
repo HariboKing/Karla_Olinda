@@ -28,6 +28,7 @@
   ],
   "groups": [
     {
+      "id": "gigs-and-live-performances",
       "title": "Gigs and Live Performances",
       "items": [
         { "title": "Live 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
@@ -38,6 +39,7 @@
       ]
     },
     {
+      "id": "classical-and-art-songs",
       "title": "Classical & Art Songs",
       "items": [
         { "title": "Classical 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
@@ -49,6 +51,7 @@
       ]
     },
     {
+      "id": "original-songs",
       "title": "Original Songs",
       "items": [
         { "title": "Original 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
@@ -60,6 +63,7 @@
       ]
     },
     {
+      "id": "choir-and-musical",
       "title": "Choir and Musical",
       "items": [
         { "title": "Choir 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
@@ -68,6 +72,28 @@
         { "title": "Choir 04", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
         { "title": "Choir 05", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" },
         { "title": "Choir 06", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Leeg" }
+      ]
+    },
+    {
+      "id": "interviews-and-podcasts",
+      "title": "Interviews and podcasts",
+      "items": [
+        { "title": "Interview 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Interview or podcast feature. Details can be added later." },
+        { "title": "Interview 02", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Interview or podcast feature. Details can be added later." },
+        { "title": "Podcast 01", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Podcast appearance or recorded conversation. Details can be added later." },
+        { "title": "Podcast 02", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Podcast appearance or recorded conversation. Details can be added later." }
+      ]
+    },
+    {
+      "id": "projects-and-events",
+      "title": "Projects and events",
+      "items": [
+        { "title": "Jury Work", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Documentation of jury work, evaluation or artistic feedback." },
+        { "title": "Vocal Competition", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Photos or videos from vocal competitions and talent development." },
+        { "title": "Workshop", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Workshop or group learning moment connected to voice and performance." },
+        { "title": "Community Event", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Community music event or cultural programme." },
+        { "title": "Backstage", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Behind-the-scenes material from projects, events or preparation." },
+        { "title": "Event Support", "link": "", "image": "", "date": "XXXX-XXXX", "location": "Leeg", "description": "Documentation of artistic support for a project or event." }
       ]
     }
   ]
