@@ -1,7 +1,17 @@
 .page-home .page-intro {
   bottom: -4vh;
   background-position: center, center 22%, center;
+  background-size: cover, auto 160%, cover;
   transform: translateY(-4vh);
+}
+
+@media (max-aspect-ratio: 3 / 4) {
+  .page-home .page-intro {
+    bottom: 0;
+    background-position: center;
+    background-size: cover, contain, cover;
+    transform: none;
+  }
 }
 
 .hero-portrait {
