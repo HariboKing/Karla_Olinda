@@ -1,5 +1,7 @@
 .page-home .page-intro {
+  bottom: -4vh;
   background-position: center, center 22%, center;
+  transform: translateY(-4vh);
 }
 
 .hero-portrait {
