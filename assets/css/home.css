@@ -5,16 +5,6 @@
   background: #000;
 }
 
-.page-home .page-intro {
-  background-color: #000;
-  background-image:
-    linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.22)),
-    url("../images/portrait.jpg"),
-    linear-gradient(135deg, #19130b, #050505);
-  background-position: center, center top, center;
-  background-size: cover, auto 88%, cover;
-}
-
 .hero-portrait::before,
 .hero-portrait::after {
   content: "";
@@ -28,7 +18,7 @@
   background-image: url("../images/portrait.jpg");
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: auto 88%;
+  background-size: auto 100%;
 }
 
 .hero-portrait::after {
@@ -188,13 +178,13 @@
   }
 
   .hero-portrait::before {
-    background-size: auto 84%;
+    background-size: auto 96%;
   }
 }
 
 @media (max-width: 520px) {
   .hero-portrait::before {
-    background-size: auto 78%;
+    background-size: auto 92%;
   }
 }
 .feature-block h2 a {
