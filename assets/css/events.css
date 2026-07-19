@@ -1,4 +1,4 @@
-/* Projects & Events service page v20260718-2 */
+/* Projects & Events service page v20260719-1 */
 .events-page {
   min-height: 100vh;
   color: var(--text-dark);
@@ -84,11 +84,46 @@
 }
 
 .events-intro-card {
-  max-width: 980px;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
   padding: clamp(34px, 5vw, 64px);
   border: 1px solid var(--line-light);
   background: #fff;
   box-shadow: 0 24px 58px rgba(0, 0, 0, 0.08);
+}
+
+.events-intro-copy {
+  align-self: center;
+}
+
+.events-panel-image {
+  min-height: 380px;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--media-empty);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(33, 33, 33, 0.1);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.16);
+}
+
+.events-offer-image {
+  background-image:
+    linear-gradient(160deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.34)),
+    url("../images/events-offer.jpg"),
+    radial-gradient(circle at 44% 24%, rgba(201, 150, 27, 0.3), transparent 26%),
+    linear-gradient(140deg, #332515, #090909);
+}
+
+.events-experience-image {
+  background-image:
+    linear-gradient(160deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.34)),
+    url("../images/events-experience.jpg"),
+    radial-gradient(circle at 52% 28%, rgba(183, 43, 44, 0.28), transparent 26%),
+    linear-gradient(140deg, #271614, #090909);
 }
 
 .events-intro-card h2,
@@ -207,8 +242,6 @@
 
 .evaluation-list span:first-child {
   min-height: 64px;
-  color: #fff;
-  background: var(--artist-red);
 }
 
 .jury-evaluation .events-copy h2 {
@@ -222,7 +255,7 @@
 
 .experience-brief-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
   gap: 28px;
   align-items: center;
   padding: 34px;
@@ -282,6 +315,10 @@
   background: var(--artist-red);
 }
 
+.experience-brief-inner .events-button-secondary {
+  margin-top: 22px;
+}
+
 .page-events .site-footer {
   background: #030303;
   border-top-color: var(--line-dark);
@@ -296,6 +333,7 @@
 
 @media (max-width: 900px) {
   .events-split,
+  .events-intro-card,
   .experience-brief-inner {
     grid-template-columns: 1fr;
   }
@@ -311,6 +349,10 @@
   .evaluation-list span:first-child {
     grid-row: auto;
     min-height: 64px;
+  }
+
+  .events-panel-image {
+    min-height: 360px;
   }
 }
 
@@ -351,6 +393,10 @@
   .events-service-grid article:nth-child(even) {
     min-height: 260px;
     transform: none;
+  }
+
+  .events-panel-image {
+    min-height: 300px;
   }
 
   .events-button {
