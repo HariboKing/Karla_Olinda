@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>KO favicon</title>
+  <title>K favicon</title>
   <circle cx="32" cy="32" r="31" fill="#050505"/>
   <circle cx="32" cy="32" r="27.5" fill="none" stroke="#c9961b" stroke-width="2"/>
   <text x="32" y="41" text-anchor="middle" fill="#fff"
         font-family="'Ms Madi', 'Brush Script MT', cursive"
-        font-size="33" font-weight="400">KO</text>
+        font-size="42" font-weight="400">K</text>
   <circle cx="48" cy="18" r="3.2" fill="#b72b2c"/>
 </svg>
