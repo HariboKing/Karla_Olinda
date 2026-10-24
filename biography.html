@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Ms+Madi&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260719-1">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024-1">
   <link rel="stylesheet" href="assets/css/biography.css?v=20260718-1">
 </head>
 <body class="page-biography">
@@ -26,10 +26,10 @@
       </button>
       <nav class="site-nav" id="site-nav">
         <a href="/">Home</a>
-        <a href="/media">Media</a>
+        <a href="/media" hidden data-temporarily-offline="media">Media</a>
         <a href="/biography" aria-current="page">Biography</a>
         <a href="/lessons">Lessons</a>
-        <a href="/events">Projects &amp; Events</a>
+        <a href="/events" hidden data-temporarily-offline="events">Projects &amp; Events</a>
         <a href="/contact">Contact</a>
       </nav>
     </div>
@@ -89,11 +89,11 @@
             by founding music initiatives, organising vocal competitions, serving as a jury
             member and supporting the artistic development of young singers.
           </p>
-          <p class="bio-inline-link">
-            Click here to learn more about <a href="/events">Projects &amp; Events</a>.
+          <p class="bio-inline-link" hidden data-temporarily-offline="events">
+            Click here to learn more about <a href="/events" hidden data-temporarily-offline="events">Projects &amp; Events</a>.
           </p>
-          <div class="bio-button-row">
-            <a class="bio-button" href="/media">Watch &amp; Listen</a>
+          <div class="bio-button-row" hidden data-temporarily-offline="media">
+            <a class="bio-button" href="/media" hidden data-temporarily-offline="media">Watch &amp; Listen</a>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@
           A personal artist quote can be added here, connecting memory, ritual, voice and hope.
         </p>
         <div class="bio-actions">
-          <a class="bio-button" href="/media">Watch &amp; Listen</a>
+          <a class="bio-button" href="/media" hidden data-temporarily-offline="media">Watch &amp; Listen</a>
           <a class="bio-button bio-button-secondary" href="/contact">Contact</a>
         </div>
       </div>
@@ -144,10 +144,10 @@
       <div>
         <h3>Links</h3>
         <a href="/">Home</a>
-        <a href="/media">Media</a>
+        <a href="/media" hidden data-temporarily-offline="media">Media</a>
         <a href="/biography">Biography</a>
         <a href="/lessons">Lessons</a>
-        <a href="/events">Projects &amp; Events</a>
+        <a href="/events" hidden data-temporarily-offline="events">Projects &amp; Events</a>
         <a href="/contact">Contact</a>
       </div>
       <div>
@@ -163,6 +163,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=20260715-13"></script>
+  <script src="assets/js/main.js?v=20261024-1"></script>
 </body>
 </html>

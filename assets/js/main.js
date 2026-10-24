@@ -649,6 +649,8 @@ function renderPortfolio(groups) {
     if (group.id === "projects-and-events") {
       const note = document.createElement("p");
       note.className = "media-inline-note media-group-note";
+      note.hidden = true;
+      note.dataset.temporarilyOffline = "events";
       note.innerHTML = 'Looking for artistic support, jury work or cultural events? <a href="/events">Click here to learn more about Projects &amp; Events.</a>';
       section.appendChild(note);
     }
@@ -684,6 +686,9 @@ setupNavigation();
 setupPlaceholderLinks();
 setupContactForm();
 setupLatestVideoHover();
-if (document.querySelector("[data-featured-track], [data-portfolio-grid]")) {
+const hasPublishedMedia = Array.from(document.querySelectorAll("[data-featured-track], [data-portfolio-grid]"))
+  .some((element) => !element.closest("[hidden]"));
+
+if (hasPublishedMedia) {
   loadMediaData();
 }

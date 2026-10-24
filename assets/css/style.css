@@ -21,6 +21,11 @@
   box-sizing: border-box;
 }
 
+/* Preserve unpublished content in source while keeping it out of every layout. */
+[hidden][data-temporarily-offline] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
