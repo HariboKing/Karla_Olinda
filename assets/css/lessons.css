@@ -449,6 +449,35 @@
   color: var(--text-light);
 }
 
+@media (min-width: 981px) {
+  .lesson-card-grid,
+  .lesson-info-grid {
+    row-gap: 0;
+  }
+
+  /* Shared rows keep lists aligned when neighbouring headings wrap. */
+  .lesson-card {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .lesson-info-card {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .info-list {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+}
+
 @media (max-width: 980px) {
   .lessons-split,
   .lesson-card-grid,

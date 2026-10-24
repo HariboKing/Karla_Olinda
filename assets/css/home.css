@@ -57,7 +57,16 @@
 }
 
 .hero-story {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 64px;
   background-color: #fff;
+}
+
+.hero-story .hero-copy,
+.hero-story .social-row {
+  width: 100%;
 }
 
 .hero-story .social-row {
@@ -165,6 +174,16 @@
   max-width: none;
   margin-top: 8px;
   font-size: 1rem;
+}
+
+.latest-video-details a {
+  color: var(--artist-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.latest-video-details a:hover {
+  color: var(--text-dark);
 }
 
 .site-footer {
