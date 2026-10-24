@@ -19,10 +19,10 @@ Their original HTML, CSS, scripts and media data remain in the repository.
 Latest Update uses the uploaded video's own aspect ratio. Its maximum height
 is controlled by `.latest-video-frame video` in `assets/css/home.css`.
 
+The large Teaching in practice photo is `assets/images/lessons-teaching-01.jpg`.
 The Lessons images still to supply in `assets/images/` are:
 
 - `lessons-hero.jpg`
 - `lessons-rehearsal.jpg`
-- `lessons-teaching-01.jpg`
 - `lessons-teaching-02.jpg`
 - `lessons-teaching-03.jpg`

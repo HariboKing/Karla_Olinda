@@ -286,9 +286,10 @@
 .teaching-photo-one {
   grid-row: span 2;
   min-height: 580px;
+  background-position: center top;
   background-image:
     linear-gradient(180deg, rgba(5, 5, 5, 0.02), rgba(5, 5, 5, 0.22)),
-    url("../images/lessons-teaching-01.jpg"),
+    url("../images/lessons-teaching-01.jpg?v=20261024-1"),
     linear-gradient(140deg, #221d16, #d7c9ae);
 }
 
