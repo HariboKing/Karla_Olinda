@@ -141,14 +141,11 @@
   justify-content: center;
 }
 
-.latest-video-frame video {
+.latest-video-frame iframe {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: min(75svh, 800px);
-  object-fit: contain;
-  border: 1px solid rgba(18, 18, 18, 0.16);
+  width: min(100%, 133.333svh);
+  aspect-ratio: 16 / 9;
+  border: 0;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
 }
 
