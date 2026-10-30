@@ -141,6 +141,14 @@
   justify-content: center;
 }
 
+.latest-video-title {
+  margin: 0 0 14px;
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .latest-video-frame iframe {
   display: block;
   width: min(100%, 133.333svh);
