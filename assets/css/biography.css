@@ -13,10 +13,9 @@
   z-index: 10000;
   background-image:
     linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.18)),
-    url("../images/denpasar.jpg"),
-    url("../images/denpasar.png"),
+    url("../images/karla-bali-portrait.jpeg"),
     linear-gradient(135deg, #19130b, #050505);
-  background-position: center;
+  background-position: center 18%;
   background-size: cover;
   background-repeat: no-repeat;
   animation: bio-intro-fade 2.4s ease-in-out forwards;
@@ -236,7 +235,7 @@
   position: absolute;
   inset: -16px;
   z-index: 0;
-  background-image: url("../images/denpasar.png");
+  background-image: url("../images/karla-bali-portrait.jpeg");
   background-position: center;
   background-size: cover;
   filter: blur(6px) saturate(0.58);
@@ -360,4 +359,8 @@
   .bio-intro {
     animation-duration: 2s;
   }
+}
+
+.page-biography .page-intro {
+  background-position: center 18%;
 }
