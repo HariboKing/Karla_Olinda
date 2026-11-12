@@ -136,7 +136,7 @@ function setupDirectContactForm() {
         success.focus();
       }
     } catch (error) {
-      setError("The message could not be sent. Please try again or email info@jovka.org directly.");
+      setError("The message could not be sent. Please try again or email info@karlaolinda.com directly.");
       submitButton.disabled = false;
       submitButton.textContent = "Send message";
     }

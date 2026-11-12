@@ -216,7 +216,7 @@ function setupContactForm() {
     ].join("\n");
 
     const subject = `Karla Olinda contact form - ${name}`;
-    window.location.href = `mailto:info@jovka.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:info@karlaolinda.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 
