@@ -364,3 +364,35 @@
 .page-biography .page-intro {
   background-position: center 18%;
 }
+
+@media (min-width: 768px) {
+  .page-biography .page-intro {
+    overflow: hidden;
+    background-image: none;
+    background-color: #090c12;
+  }
+
+  .page-biography .page-intro::before,
+  .page-biography .page-intro::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/karla-bali-portrait.jpeg");
+    background-repeat: no-repeat;
+  }
+
+  .page-biography .page-intro::before {
+    inset: -26px;
+    z-index: 0;
+    background-position: center 18%;
+    background-size: cover;
+    filter: blur(24px) saturate(0.82) brightness(0.58);
+    transform: scale(1.06);
+  }
+
+  .page-biography .page-intro::after {
+    z-index: 1;
+    background-position: center;
+    background-size: auto 100%;
+  }
+}
